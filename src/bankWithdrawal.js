@@ -1,35 +1,24 @@
-// "use strict";
-//
-// (function(exports) {
-//   function bankAccount(balance = 0) {
-//     this._balance = balance;
-//     this.record = [];
-//     this.recordStructure = { date: "", credit: "", debit: "", balance: 0 };
-//   }
-//
-//   bankAccount.prototype.balance = function() {
-//     return this._balance;
-//   };
-//
-  // bankAccount.prototype.addBalance = function(balance) {
-  //   this._balance = this._balance + balance;
-  // };
-  //
-  // bankAccount.prototype.deposit = function(amount, today) {
-  //   this.addBalance(amount);
-  //   this.record.push({ date: today, credit: amount, debit: " ", balance: "" });
-  //   this.record[this.record.length - 1]["balance"] = this.balance;
-  // };
-  //
-  // bankAccount.prototype.withdraw = function(amount, today) {
-  //   if (amount > this._balance) {
-  //     throw "Insufficient funds";
-  //     return;
-  //   }
-  //   this.addBalance(-amount);
-  //   this.record.push({ date: today, credit: " ", debit: amount, balance: "" });
-  //   this.record[this.record.length - 1]["balance"] = this.balance;
-  // };
-  //
-  // exports.bankAccount = bankAccount;
-// })(this);
+"use strict";
+
+(function(exports) {
+  function bankWithdrawal(bankAccount) {
+    this.bankAccount = bankAccount;
+    this.record = "";
+  };
+
+  bankWithdrawal.prototype.checkPositive = function(amount){
+    if (amount > this.bankAccount.balance()) {
+      throw "Insufficient funds";
+    }
+  };
+
+  bankWithdrawal.prototype.proceed = function(amount, today) {
+    this.checkPositive(amount);
+    this.bankAccount.addBalance(-amount);
+    this.record = { date: today, credit: "", debit: amount, balance: "" };
+    this.record.balance = this.bankAccount.balance();
+    this.bankAccount.record.push(this.record);
+  };
+
+    exports.bankWithdrawal = bankWithdrawal;
+})(this);

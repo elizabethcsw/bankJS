@@ -1,9 +1,11 @@
-describe("bankStatement", function() {
+describe("bankDeposit", function() {
   var account;
   var deposit;
 
   beforeEach(function() {
-    account = {record: [ { date: '2012-01-10', credit: 1000, debit: ' ', balance: 1000 }, { date: '2012-01-13', credit: 2000, debit: ' ', balance: 3000 }, { date: '2012-01-14', credit: ' ', debit: 500, balance: 2500 } ]}
+    account = {
+      record: []
+    }
 
     deposit = new bankDeposit(account);
   });

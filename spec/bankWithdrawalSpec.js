@@ -1,19 +1,32 @@
-// describe("bankStatement", function() {
-//   var account;
-//   var statement;
-//
-//   beforeEach(function() {
-//     account = {record: [ { date: '2012-01-10', credit: 1000, debit: ' ', balance: 1000 }, { date: '2012-01-13', credit: 2000, debit: ' ', balance: 3000 }, { date: '2012-01-14', credit: ' ', debit: 500, balance: 2500 } ]}
-//
-//     statement = new bankStatement(account);
-//   });
-//
-//   it("should be in chronological order", function() {
-//     expect(statement.sortByDate()).toEqual([ { date: '2012-01-14', credit: ' ', debit: 500, balance: 2500 },{ date: '2012-01-13', credit: 2000, debit: ' ', balance: 3000 }, { date: '2012-01-10', credit: 1000, debit: ' ', balance: 1000 },  ])
-//   });
-//
-//   it("should print in the correct format", function() {
-//     expect(statement.print()).toEqual("\ndate || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00\n13/01/2012 || 2000.00 || || 3000.00\n10/01/2012 || 1000.00 || || 1000.00");
-//   });
-//
-// });
+describe("bankWithdrawal", function() {
+  var account;
+  var withdrawal;
+
+  beforeEach(function() {
+    account = {record: []}
+
+    withdrawal = new bankWithdrawal(account);
+  });
+
+  it("throws an error when there is insufficient funds to be withdrawn", function() {
+    account.balance = jasmine.createSpy("balance spy").and.returnValue(1000);
+
+    expect(function() {
+            withdrawal.checkPositive(3000);
+          }).toThrow("Insufficient funds");
+
+  });
+
+  it("can withdraw money from the account", function() {
+    account.balance = jasmine.createSpy("balance spy").and.returnValue(1000);
+    account.addBalance = jasmine.createSpy("addBalance() spy");
+    withdrawal.checkPositive = jasmine.createSpy("checkPositive() spy").and.returnValue(false);
+
+    withdrawal.proceed(2000, '2012-01-13');
+    expect(withdrawal.record).toEqual({ date: '2012-01-13', credit: '', debit: 2000, balance: 1000 })
+  });
+
+  //  spyOn(foo, "setBar").and.throwError("quux");
+  // spyOn(foo, "getBar").and.returnValue(745);
+
+});
