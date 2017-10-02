@@ -1,6 +1,8 @@
-'use strict';
+
+// const bankAccount = require("../src/bankAccount").bankAccount;
 
 describe("bankAccount", function() {
+  var account;
   var statement;
 
   beforeEach(function() {
@@ -8,11 +10,11 @@ describe("bankAccount", function() {
     account.deposit(1000, '10/01/2012');
     account.deposit(3000, '02/10/2012');
     account.withdraw(500, '14/01/2012');
-    statement = new bankStatement();
+    statement = new bankStatement(account);
   });
 
   it("should have 0 balance to start with", function() {
-    expect(statement.print()).toEqual("date       || credit  || debit  || balance\n14/01/2012 ||         || 500.00 || 2500.00\n13/01/2012 || 2000.00 ||        || 3000.00\n10/01/2012 || 1000.00 ||        || 1000.00");
+    expect(statement.print()).toEqual("\ndate       || credit  || debit  || balance\n14/01/2012 ||         || 500.00 || 2500.00\n13/01/2012 || 2000.00 ||        || 3000.00\n10/01/2012 || 1000.00 ||        || 1000.00");
   });
 
   // it("cannot withdraw money if there is insufficient funds", function() {
