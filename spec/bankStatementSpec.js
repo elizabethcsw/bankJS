@@ -7,14 +7,14 @@ describe("bankAccount", function() {
 
   beforeEach(function() {
     account = new bankAccount();
-    account.deposit(1000, '10/01/2012');
-    account.deposit(3000, '02/10/2012');
-    account.withdraw(500, '14/01/2012');
+    account.deposit(1000, '2012-01-10');
+    account.deposit(2000, '2012-01-13');
+    account.withdraw(500, '2012-01-14');
     statement = new bankStatement(account);
   });
 
-  it("should have 0 balance to start with", function() {
-    expect(statement.print()).toEqual("\ndate       || credit  || debit  || balance\n14/01/2012 ||         || 500.00 || 2500.00\n13/01/2012 || 2000.00 ||        || 3000.00\n10/01/2012 || 1000.00 ||        || 1000.00");
+  it("should be in chronological order", function() {
+    expect(statement.print()).toEqual("\nddate || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00\n13/01/2012 || 2000.00 || || 3000.00\n10/01/2012 || 1000.00 || || 1000.00");
   });
 
   // it("cannot withdraw money if there is insufficient funds", function() {
