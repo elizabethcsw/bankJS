@@ -21,5 +21,4 @@ describe("bankAccount", function() {
     account.addBalance(-1);
     expect(account.balance()).toEqual(4);
   });
-
 });
