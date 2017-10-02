@@ -15,21 +15,5 @@
     return this._balance = this._balance + balance;
   };
 
-  bankAccount.prototype.deposit = function(amount, today) {
-    this.addBalance(amount);
-    this.record.push({ date: today, credit: amount, debit: "", balance: "" });
-    this.record[this.record.length - 1]["balance"] = this.balance;
-  };
-
-  bankAccount.prototype.withdraw = function(amount, today) {
-    if (amount > this._balance) {
-      throw "Insufficient funds";
-      return;
-    }
-    this.addBalance(-amount);
-    this.record.push({ date: today, credit: " ", debit: amount, balance: "" });
-    this.record[this.record.length - 1]["balance"] = this.balance;
-  };
-
   exports.bankAccount = bankAccount;
 })(this);
