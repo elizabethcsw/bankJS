@@ -11,10 +11,14 @@
     return this._balance;
   };
 
+  bankAccount.prototype.addBalance = function(balance) {
+    return this._balance = this._balance + balance;
+  };
+
   bankAccount.prototype.deposit = function(amount, today) {
-    this._balance += amount;
-    this.record.push({ date: today, credit: amount, debit: " ", balance: "" });
-    this.record[this.record.length - 1]["balance"] = this._balance;
+    this.addBalance(amount);
+    this.record.push({ date: today, credit: amount, debit: "", balance: "" });
+    this.record[this.record.length - 1]["balance"] = this.balance;
   };
 
   bankAccount.prototype.withdraw = function(amount, today) {
@@ -22,9 +26,9 @@
       throw "Insufficient funds";
       return;
     }
-    this._balance -= amount;
+    this.addBalance(-amount);
     this.record.push({ date: today, credit: " ", debit: amount, balance: "" });
-    this.record[this.record.length - 1]["balance"] = this._balance;
+    this.record[this.record.length - 1]["balance"] = this.balance;
   };
 
   exports.bankAccount = bankAccount;
