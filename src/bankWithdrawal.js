@@ -1,24 +1,24 @@
-"use strict";
+'use strict';
 
 (function(exports) {
-  function bankWithdrawal(bankAccount) {
-    this.bankAccount = bankAccount;
-    this.record = "";
-  };
+	function bankWithdrawal(bankAccount) {
+		this.bankAccount = bankAccount;
+		this.record = '';
+	}
 
-  bankWithdrawal.prototype.checkPositive = function(amount){
-    if (amount > this.bankAccount.balance()) {
-      throw "Insufficient funds";
-    }
-  };
+	bankWithdrawal.prototype.checkPositive = function(amount){
+		if (amount > this.bankAccount.balance()) {
+			throw 'Insufficient funds';
+		}
+	};
 
-  bankWithdrawal.prototype.proceed = function(amount, today) {
-    this.checkPositive(amount);
-    this.bankAccount.addBalance(-amount);
-    this.record = { date: today, credit: "", debit: amount, balance: "" };
-    this.record.balance = this.bankAccount.balance();
-    this.bankAccount.record.push(this.record);
-  };
+	bankWithdrawal.prototype.proceed = function(amount, today) {
+		this.checkPositive(amount);
+		this.bankAccount.addBalance(-amount);
+		this.record = { date: today, credit: '', debit: amount, balance: '' };
+		this.record.balance = this.bankAccount.balance();
+		this.bankAccount.record.push(this.record);
+	};
 
-    exports.bankWithdrawal = bankWithdrawal;
+	exports.bankWithdrawal = bankWithdrawal;
 })(this);
