@@ -4,7 +4,8 @@
   "description": "simple bank system",
   "main": "app-test.js",
   "scripts": {
-    "./node_modules/.bin/eslint": "eslint"
+    "./node_modules/.bin/eslint": "eslint",
+    "test": "istanbul cover --include-all-sources jasmine-node spec"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,15 @@
   },
   "homepage": "https://github.com/elizabethcsw/bankJS#readme",
   "devDependencies": {
-    "eslint": "^4.8.0"
+    "eslint": "^4.8.0",
+    "jasmine-core": "^2.8.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0"
+  },
+  "dependencies": {
+    "istanbul": "^0.4.5",
+    "jasmine-node": "^1.14.5",
+    "karma": "^1.7.1",
+    "karma-coverage": "^1.1.1"
   }
 }
