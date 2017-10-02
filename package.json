@@ -5,7 +5,8 @@
   "main": "app-test.js",
   "scripts": {
     "./node_modules/.bin/eslint": "eslint",
-    "test": "istanbul cover --include-all-sources jasmine-node spec"
+    "test-coverage": "istanbul cover --include-all-sources jasmine-node test",
+    "test" : "./node_modules/karma/bin/karma start karma.conf.js"
   },
   "repository": {
     "type": "git",
