@@ -1,9 +1,9 @@
 Bank!
 ============
 
-A REPL application to mimic a simple ATM system.  
+A REPL application that mimics a simple ATM system.  
 
-Tech stack:  Javascript, Jasmine for testing, and Karma and Istanbul for test coverage.
+Tech stack:  Javascript, Jasmine for testing, ESLint as linter, and Karma and Istanbul for test coverage.
 
 User Stories
 ---------
@@ -39,14 +39,14 @@ $ npm install
 
 How to Run
 -------
-Create an instance of each constructor object
+Create an instance of each constructor object:
 ```
 > account = new bankAccount();
 > withdrawal = new bankWithdrawal(account);
 > deposit = new bankDeposit(account);
 > statement = new bankStatement(account);
 ```
-Run the appropriate methods as needed
+Run the appropriate methods as needed:
 ```
 > deposit.proceed(2000, '2012-01-13');
 > withdrawal.proceed(1000, '2012-01-15');
