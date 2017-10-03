@@ -10,7 +10,7 @@
 		if (amount > this.bankAccount.balance()) {
 			throw 'Insufficient funds';
 		} else {
-			return true
+			return true;
 		}
 	};
 
