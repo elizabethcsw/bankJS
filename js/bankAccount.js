@@ -15,5 +15,9 @@
 		return this._balance = this._balance + balance;
 	};
 
+  bankAccount.prototype.addRecord = function(record) {
+    this.record.push(record);
+  };
+
 	exports.bankAccount = bankAccount;
 })(this);

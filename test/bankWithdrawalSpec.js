@@ -3,8 +3,12 @@ describe('bankWithdrawal', function() {
 	var withdrawal;
 
 	beforeEach(function() {
-		account = {record: []};
+		account = {
+			record: [],
+			addRecord: function(){}
+		};
 		withdrawal = new bankWithdrawal(account);
+
 	});
 
 	it('throws an error when there is insufficient funds to be withdrawn', function() {

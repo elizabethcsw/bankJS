@@ -2,14 +2,13 @@
 
 (function(exports) {
 	function transaction(options) {
-		this._date = options.date
-		this._credit = options.credit
-		this._debit = options.debit
-		this.record = [];
-		this.recordStructure = { date: '', credit: '', debit: '', balance: 0 };
+		this._date = options.date;
+		this._credit = options.credit;
+		this._debit = options.debit;
+		this._balance = options.balance;
 	}
 
-	transaction.prototype.balance = function() {
+	transaction.prototype.format = function() {
 		return this._balance;
 	};
 

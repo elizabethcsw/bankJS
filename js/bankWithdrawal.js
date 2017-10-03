@@ -19,7 +19,7 @@
 		this.bankAccount.addBalance(-amount);
 		this.record = { date: today, credit: '', debit: amount, balance: '' };
 		this.record.balance = this.bankAccount.balance();
-		this.bankAccount.record.push(this.record);
+		this.bankAccount.addRecord(this.record);
 	};
 
 	exports.bankWithdrawal = bankWithdrawal;
