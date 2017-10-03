@@ -15,7 +15,3 @@
 
 	exports.bankDeposit = bankDeposit;
 })(this);
-
-// account = new bankAccount()
-// deposit = new bankDeposit(account)
-// deposit.proceed(1000, '2012-01-13')
