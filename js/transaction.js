@@ -8,12 +8,13 @@
 		this._balance = options.balance;
 	}
 
-	transaction.prototype.format = function() {
-		return this._balance;
+	transaction.prototype.produceCreditRecord = function() {
+		return { date: this._format(this._date), credit: this._credit, debit: '', balance: '' };
 	};
 
-	transaction.prototype.addBalance = function(balance) {
-		return this._balance = this._balance + balance;
+	transaction.prototype._format = function(d) {
+		d = (new Date(d));
+		return ('0' + d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();
 	};
 
 	exports.transaction = transaction ;
