@@ -6,20 +6,16 @@
 		this._header = '\ndate || credit || debit || balance';
 	}
 
-	function format(d){
-		d = (new Date(d));
-		return ('0' + d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();
-	}
-
-	function float(n){
-		if (n == 0 || n == ''){
-			return '';}
-		return ' ' + Number(n).toFixed(2);
-	}
-
 	bankStatement.prototype.sortByDate = function() {
 		return this.bankAccount.record.sort(function(a,b){
-			return new Date(b.date) - new Date(a.date);
+			a = a.date.split('/');
+			b = b.date.split('/');
+			if (a[1] == b[1]) {
+				return parseInt(b[0]) - parseInt(a[0])
+			} else if (a[2] == b[2]) {
+				return parseInt(b[1]) - parseInt(a[1])
+			} else if  ( a[2] > b[2] ) { return -1 }
+				else if (a[2] < b[2] ){ return 1 }
 		});
 	};
 
@@ -27,7 +23,7 @@
 		var details = '';
 		var sorted = this.sortByDate();
 		sorted.forEach(function(hash){
-			details+=( '\n' + format(hash['date']) + ' ||' + float(hash['credit']) + ' ||' + float(hash['debit']) + ' ||' + float(hash['balance']));
+			details+=( '\n' + hash.date + ' || ' + hash.credit + ' || ' + hash.debit + ' || ' + hash.balance);
 		});
 		return this._header + details;
 	};
