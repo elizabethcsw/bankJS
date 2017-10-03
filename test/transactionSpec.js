@@ -8,13 +8,13 @@ describe('transaction', function() {
 	});
 
 	it('can produce a credit record', function() {
-		transact = new transaction(creditHash);
-		expect(transact.produceCreditRecord()).toEqual({ date: '13/01/2012', credit: 2000, debit: '', balance: '' });
+		transact = new inputTransaction(creditHash);
+		expect(transact.produceRecord()).toEqual({ date: '13/01/2012', credit: '2000.00', debit: '', balance: '' });
 	});
 
 	it('can produce a debit record', function() {
-		transact = new transaction(debitHash);
-		expect(transact.produceDebitRecord()).toEqual({ date: '13/01/2012', credit: '', debit: 2000, balance: '' });
+		transact = new inputTransaction(debitHash);
+		expect(transact.produceRecord()).toEqual({ date: '13/01/2012', credit: '', debit: '2000.00', balance: '' });
 	});
 
 });
