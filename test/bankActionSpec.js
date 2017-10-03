@@ -15,11 +15,13 @@ describe('bankAction', function() {
 	it('can withdraw money from the account', function() {
 		action.proceed("withdraw", 200, '2012-01-13');
 		expect(action.debit).toEqual(200);
+		expect(action.credit).toEqual(0);
 	});
 
 	it('can deposit money into the account', function() {
 		action.proceed("deposit", 3000, '2012-01-13');
 		expect(action.credit).toEqual(3000);
+		expect(action.debit).toEqual(0);
 	});
 
 	it('throws an error when there is an invalid action', function() {
