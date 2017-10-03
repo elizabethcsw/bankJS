@@ -42,22 +42,23 @@ How to Run
 Create an instance of each constructor object:
 ```
 > account = new bankAccount();
-> withdrawal = new bankWithdrawal(account);
-> deposit = new bankDeposit(account);
-> statement = new bankStatement(account);
+> action = new bankWithdrawal(account);
+> statement = new bankStatement(account.record);
 ```
 Run the appropriate methods as needed:
 ```
-> deposit.proceed(2000, '2012-01-13');
-> withdrawal.proceed(1000, '2012-01-15');
+> action.proceed("deposit", 1000, '2012-01-10');
+> action.proceed("deposit", 2000, '2012-01-13');
+> action.proceed("withdraw", 500, '2012-01-15');
 > statement.print();
 ```
 
 You should see:
 ```
 date || credit || debit || balance
-15/01/2012 || || 1000.00 || 1000.00
-13/01/2012 || 2000.00 || || 2000.00
+15/01/2012 ||  || 500.00 || 2500.00
+13/01/2012 || 2000.00 ||  || 3000.00
+10/01/2012 || 1000.00 ||  || 1000.00
 ```
 
 
