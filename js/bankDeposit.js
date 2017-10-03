@@ -7,9 +7,8 @@
 	}
 
 	bankDeposit.prototype.proceed = function(amount, today) {
-		this.bankAccount.addBalance(amount);
-		this.record = new transaction({ date: today, credit: amount, debit: '', balance: '' }).produceCreditRecord();
-		this.record.balance = this.bankAccount.balance();
+		var newBalance = this.bankAccount.addBalance(amount);
+		this.record = new transaction({ date: today, credit: amount, debit: '', balance: newBalance }).produceCreditRecord();
 		this.bankAccount.addRecord(this.record);
 	};
 
