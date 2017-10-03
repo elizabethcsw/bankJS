@@ -4,7 +4,6 @@
 	function bankAccount() {
 		this._balance = 0;
 		this.record = [];
-		this.recordStructure = { date: '', credit: '', debit: '', balance: 0 };
 	}
 
 	bankAccount.prototype.balance = function() {
