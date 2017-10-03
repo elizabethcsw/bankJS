@@ -32,7 +32,4 @@ describe('bankWithdrawal', function() {
 		expect(withdrawal.record).toEqual({ date: '2012-01-13', credit: '', debit: 2000, balance: 1000 });
 	});
 
-	//  spyOn(foo, "setBar").and.throwError("quux");
-	// spyOn(foo, "getBar").and.returnValue(745);
-
 });
