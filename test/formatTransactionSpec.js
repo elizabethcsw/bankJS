@@ -1,4 +1,4 @@
-describe('transaction', function() {
+describe('formatTransaction', function() {
 	var account;
 	var deposit;
 
@@ -8,12 +8,12 @@ describe('transaction', function() {
 	});
 
 	it('can produce a credit record', function() {
-		transact = new inputTransaction(creditHash);
+		transact = new formatTransaction(creditHash);
 		expect(transact.produceRecord()).toEqual({ date: '13/01/2012', credit: '2000.00', debit: '', balance: '' });
 	});
 
 	it('can produce a debit record', function() {
-		transact = new inputTransaction(debitHash);
+		transact = new formatTransaction(debitHash);
 		expect(transact.produceRecord()).toEqual({ date: '13/01/2012', credit: '', debit: '2000.00', balance: '' });
 	});
 

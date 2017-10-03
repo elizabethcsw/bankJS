@@ -11,7 +11,7 @@
 	bankAction.prototype.proceed = function(action, amount, today) {
 		this._determineAction(action, amount)
 		var newBalance = this.account.addBalance(amount);
-		this.record = new inputTransaction({ date: today, credit: this.credit, debit: this.debit, balance: newBalance }).produceRecord();
+		this.record = new formatTransaction({ date: today, credit: this.credit, debit: this.debit, balance: newBalance }).produceRecord();
 		this.account.addRecord(this.record);
 	};
 
