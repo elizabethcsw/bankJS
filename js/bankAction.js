@@ -3,7 +3,6 @@
 (function(exports) {
 	function bankAction(bankAccount) {
 		this.account = bankAccount;
-		this.record = '';
 		this.credit = '';
 		this.debit = '';
 	}
@@ -11,8 +10,8 @@
 	bankAction.prototype.proceed = function(action, amount, today) {
 		this._determineAction(action, amount)
 		var newBalance = this.account.addBalance(amount);
-		this.record = new formatTransaction({ date: today, credit: this.credit, debit: this.debit, balance: newBalance }).produceRecord();
-		this.account.addRecord(this.record);
+		var record = new formatTransaction({ date: today, credit: this.credit, debit: this.debit, balance: newBalance }).produceRecord();
+		this.account.addRecord(record);
 	};
 
 	bankAction.prototype._hasEnoughFunds = function(amount){
