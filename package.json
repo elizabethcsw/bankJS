@@ -4,7 +4,6 @@
   "description": "simple bank system",
   "main": "app-test.js",
   "scripts": {
-    "./node_modules/.bin/eslint": "eslint",
     "test-coverage": "istanbul cover --include-all-sources jasmine-node test",
     "test" : "./node_modules/karma/bin/karma start karma.conf.js"
   },
