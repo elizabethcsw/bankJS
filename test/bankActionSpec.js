@@ -10,7 +10,6 @@ describe('bankAction', function() {
 			addBalance: function(){},
 		};
 		action = new bankAction(account);
-
 	});
 
 	it('can withdraw money from the account', function() {
@@ -34,6 +33,4 @@ describe('bankAction', function() {
 			action.proceed("withdraw", 20000, '2012-01-13');
 		}).toThrow('Insufficient funds');
 	});
-
-
 });
