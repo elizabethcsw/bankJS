@@ -6,7 +6,7 @@
 		this.record = '';
 	}
 
-	bankWithdrawal.prototype.checkPositive = function(amount){
+	bankWithdrawal.prototype.hasEnoughFunds = function(amount){
 		if (amount > this.bankAccount.balance()) {
 			throw 'Insufficient funds';
 		} else {
@@ -15,7 +15,7 @@
 	};
 
 	bankWithdrawal.prototype.proceed = function(amount, today) {
-		this.checkPositive(amount);
+		this.hasEnoughFunds(amount);
 		this.bankAccount.addBalance(-amount);
 		this.record = { date: today, credit: '', debit: amount, balance: '' };
 		this.record.balance = this.bankAccount.balance();
