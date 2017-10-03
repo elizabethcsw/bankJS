@@ -6,21 +6,20 @@
 	}
 
 	bankAction.prototype.proceed = function(action, amount, today) {
-		this.amount = amount;
-		this.debit = this.credit = 0
-		this._determineAction(action, this.amount)
+		this._determineAction(action, amount)
 		var newBalance = this.account.addBalance(this.amount);
 		var record = new formatTransaction({ date: today, credit: this.credit, debit: this.debit, balance: newBalance }).produceRecord();
 		this.account.addRecord(record);
 	};
 
 	bankAction.prototype._determineAction = function(action, amount){
+		this.debit = this.credit = this.amount = amount;
 		if (action == "withdraw"){
 			this._hasEnoughFunds(amount);
-			this.debit = amount;
+			this.credit = 0;
 			this.amount = -amount;
 		} else if (action == "deposit"){
-			this.credit = amount
+			this.debit = 0;
 		} else { throw "Invalid Action!" }
 	};
 
