@@ -2,3 +2,4 @@ node_modules
 coverage
 lib
 test/bankWithdrawalSpec(spyExample).js
+test/SpecHelper.js
