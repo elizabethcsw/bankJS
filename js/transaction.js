@@ -12,6 +12,10 @@
 		return { date: this._format(this._date), credit: this._credit, debit: '', balance: '' };
 	};
 
+	transaction.prototype.produceDebitRecord = function() {
+		return { date: this._format(this._date), credit: '', debit: this._debit, balance: '' };
+	};
+
 	transaction.prototype._format = function(d) {
 		d = (new Date(d));
 		return ('0' + d.getDate()).slice(-2)+'/'+('0'+(d.getMonth()+1)).slice(-2)+'/'+d.getFullYear();

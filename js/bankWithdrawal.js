@@ -17,7 +17,7 @@
 	bankWithdrawal.prototype.proceed = function(amount, today) {
 		this.hasEnoughFunds(amount);
 		this.bankAccount.addBalance(-amount);
-		this.record = { date: today, credit: '', debit: amount, balance: '' };
+		this.record = new transaction({ date: today, credit: '', debit: amount, balance: '' }).produceDebitRecord();
 		this.record.balance = this.bankAccount.balance();
 		this.bankAccount.addRecord(this.record);
 	};

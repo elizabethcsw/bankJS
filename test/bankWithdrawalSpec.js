@@ -24,10 +24,8 @@ describe('bankWithdrawal', function() {
 	});
 
 	it('can withdraw money from the account', function() {
-		withdrawal.hasEnoughFunds = jasmine.createSpy('hasEnoughFunds() spy').and.returnValue(false);
-
-		withdrawal.proceed(2000, '2012-01-13');
-		expect(withdrawal.record).toEqual({ date: '2012-01-13', credit: '', debit: 2000, balance: 1000 });
+		withdrawal.proceed(200, '2012-01-13');
+		expect(withdrawal.record.debit).toEqual(200);
 	});
 
 });
