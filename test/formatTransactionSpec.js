@@ -8,12 +8,12 @@ describe('formatTransaction', function() {
 	});
 
 	it('can produce a credit record', function() {
-		transact = new formatTransaction(creditHash);
+		transact = new FormatTransaction(creditHash);
 		expect(transact.produceRecord()).toEqual({ date: '13/01/2012', credit: '2000.00', debit: '', balance: '' });
 	});
 
 	it('can produce a debit record', function() {
-		transact = new formatTransaction(debitHash);
+		transact = new FormatTransaction(debitHash);
 		expect(transact.produceRecord()).toEqual({ date: '13/01/2012', credit: '', debit: '2000.00', balance: '' });
 	});
 

@@ -41,9 +41,9 @@ How to Run
 -------
 Create an instance of each constructor object:
 ```
-> account = new bankAccount();
-> action = new bankAction(account);
-> statement = new bankStatement(account.record);
+> account = new BankAccount();
+> action = new BankAction(account);
+> statement = new BankStatement(account.record);
 ```
 Run the appropriate methods as needed:
 ```

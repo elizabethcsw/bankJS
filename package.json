@@ -1,7 +1,7 @@
 {
-  "name": "bankjs",
+  "name": "trinttest",
   "version": "1.0.0",
-  "description": "simple bank system",
+  "description": "cache exercise",
   "main": "app-test.js",
   "scripts": {
     "test-coverage": "istanbul cover --include-all-sources jasmine-node test",

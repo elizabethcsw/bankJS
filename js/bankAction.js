@@ -1,18 +1,18 @@
 'use strict';
 
 (function(exports) {
-	function bankAction(bankAccount) {
+	function BankAction(bankAccount) {
 		this.account = bankAccount;
 	}
 
-	bankAction.prototype.proceed = function(action, amount, today) {
+	BankAction.prototype.proceed = function(action, amount, today) {
 		this._determineAction(action, amount);
 		var newBalance = this.account.addBalance(this.amount);
-		var record = new formatTransaction({ date: today, credit: this.credit, debit: this.debit, balance: newBalance }).produceRecord();
+		var record = new FormatTransaction({ date: today, credit: this.credit, debit: this.debit, balance: newBalance }).produceRecord();
 		this.account.addRecord(record);
 	};
 
-	bankAction.prototype._determineAction = function(action, amount){
+	BankAction.prototype._determineAction = function(action, amount){
 		this.debit = this.credit = this.amount = amount;
 		if (action == 'withdraw'){
 			this._hasEnoughFunds(amount);
@@ -23,11 +23,11 @@
 		} else { throw 'Invalid Action!'; }
 	};
 
-	bankAction.prototype._hasEnoughFunds = function(amount){
+	BankAction.prototype._hasEnoughFunds = function(amount){
 		if (amount > this.account.balance()) {
 			throw 'Insufficient funds';
 		} else { return true; }
 	};
 
-	exports.bankAction = bankAction;
+	exports.BankAction = BankAction;
 })(this);

@@ -9,7 +9,7 @@ describe('bankAction', function() {
 			addRecord: function(){},
 			addBalance: function(){},
 		};
-		action = new bankAction(account);
+		action = new BankAction(account);
 	});
 
 	it('can withdraw money from the account', function() {

@@ -9,7 +9,7 @@ describe('bankStatement', function() {
 			{ date: '14/01/2012', credit: '', debit: '500.00', balance: '2500.00' }
 		]};
 
-		statement = new bankStatement(account.record);
+		statement = new BankStatement(account.record);
 	});
 
 	it('should be in chronological order', function() {

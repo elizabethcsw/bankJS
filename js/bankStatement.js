@@ -1,19 +1,19 @@
 'use strict';
 
 (function(exports) {
-	function bankStatement(record) {
+	function BankStatement(record) {
 		this.record = record;
 		this._header = '\ndate || credit || debit || balance';
 	}
 
-	bankStatement.prototype.print = function() {
+	BankStatement.prototype.print = function() {
 		var details = '';
 		this.sortByDate().forEach(function(hash){
 			details += ( '\n' + hash.date + ' || ' + hash.credit + ' || ' + hash.debit + ' || ' + hash.balance);});
 		return this._header + details;
 	};
 
-	bankStatement.prototype.sortByDate = function() {
+	BankStatement.prototype.sortByDate = function() {
 		return this.record.sort(function(a,b){
 			a = a.date.split('/');
 			b = b.date.split('/');
@@ -26,5 +26,5 @@
 		});
 	};
 
-	exports.bankStatement = bankStatement;
+	exports.BankStatement = BankStatement;
 })(this);

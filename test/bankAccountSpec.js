@@ -4,7 +4,7 @@ describe('bankAccount', function() {
 	var account;
 
 	beforeEach(function() {
-		account = new bankAccount();
+		account = new BankAccount();
 	});
 
 	it('should have 0 balance to start with', function() {
